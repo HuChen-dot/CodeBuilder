@@ -35,11 +35,28 @@ public class TypeConstant {
         typeMap.put("DECIMAL", "BigDecimal");
         typeMap.put("TINYINT", "Integer");
 
+        typeMap.put("LONGBLOB", "byte[]");
+        typeMap.put("MEDIUMTEXT", "String");
+        typeMap.put("BIGINT UNSIGNED", "Long");
+        typeMap.put("INT UNSIGNED", "Integer");
+        typeMap.put("tinyint", "byte");
+        typeMap.put("TINYINT UNSIGNED", "Integer");
+        typeMap.put("MEDIUMBLOB", "String");
+        typeMap.put("SMALLINT UNSIGNED", "Integer");
+        typeMap.put("VARBINARY", "String");
+        typeMap.put("BINARY", "byte[]");
+        typeMap.put("LONGTEXT", "String");
+        typeMap.put("SMALLINT", "Integer");
+        typeMap.put("ENUM", "String");
     }
 
 
     public static String getJavaType(String columnType) {
-
-        return typeMap.get(columnType);
+        String type = typeMap.get(columnType.toLowerCase());
+        if (type == null) {
+            type = typeMap.get(columnType.toUpperCase());
+        }
+        return type;
     }
+
 }

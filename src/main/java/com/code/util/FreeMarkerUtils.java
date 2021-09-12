@@ -37,7 +37,7 @@ public class FreeMarkerUtils {
         }
         Writer writer = null;
         try {
-            writer = new OutputStreamWriter(new FileOutputStream(savePath + "\\" + fileName), "UTF-8");
+            writer = new OutputStreamWriter(new FileOutputStream(savePath + "/" + fileName), "UTF-8");
 
             template.process(input, writer);
         } catch (Exception e) {

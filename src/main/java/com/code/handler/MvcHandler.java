@@ -35,7 +35,7 @@ public class MvcHandler {
         input.put("service", Constant.service);
         input.put("serviceImpl", Constant.service_impl);
         String fileName = table.getClassName() + "Service" + ".java";
-        String savePath = Constant.service_save_path + "//" + StringUtils.lowerName(table.getClassName()) + "//";
+        String savePath = Constant.service_save_path + "/" + StringUtils.lowerName(table.getClassName()) + "/";
         String templateName = "service";
         FreeMarkerUtils.genteratorFile(input, templateFile, templateName, savePath, fileName);
     }
@@ -49,7 +49,7 @@ public class MvcHandler {
         input.put("service", Constant.service);
         input.put("serviceImpl", Constant.service_impl);
         String fileName = table.getClassName() + "ServiceImpl" + ".java";
-        String savePath = Constant.servie_impl_save_path + "//" + StringUtils.lowerName(table.getClassName()) + "//";
+        String savePath = Constant.servie_impl_save_path + "/" + StringUtils.lowerName(table.getClassName()) + "/";
         String templateName = "serviceImpl";
         FreeMarkerUtils.genteratorFile(input, templateFile, templateName, savePath, fileName);
     }
@@ -63,7 +63,7 @@ public class MvcHandler {
         input.put("service", Constant.service);
         input.put("serviceImpl", Constant.service_impl);
         String fileName = table.getClassName() + "Mapper" + ".xml";
-        String savePath = Constant.mapper_save_path + "//" + StringUtils.lowerName(table.getClassName()) + "//";
+        String savePath = Constant.mapper_save_path + "/" + StringUtils.lowerName(table.getClassName()) + "/";
         String templateName = "mapper";
         FreeMarkerUtils.genteratorFile(input, templateFile, templateName, savePath, fileName);
     }
@@ -77,7 +77,7 @@ public class MvcHandler {
         input.put("service", Constant.service);
         input.put("serviceImpl", Constant.service_impl);
         String fileName = table.getClassName() + "Mapper" + ".java";
-        String savePath = Constant.mapper_save_path + "//" + StringUtils.lowerName(table.getClassName()) + "//";
+        String savePath = Constant.mapper_save_path + "/" + StringUtils.lowerName(table.getClassName()) + "/";
         String templateName = "clazzMapper";
         FreeMarkerUtils.genteratorFile(input, templateFile, templateName, savePath, fileName);
     }

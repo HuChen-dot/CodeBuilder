@@ -6,7 +6,6 @@ public class ${table.className} implements Serializable {
     /**
     * ${cloumn.comment}
     */
-    @Excels("${cloumn.comment}")
     private ${cloumn.javaType} ${cloumn.fieldName};
 </#list>
 
