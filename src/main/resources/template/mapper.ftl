@@ -5,7 +5,7 @@
 <mapper namespace="${mapper}.${table.className}Mapper">
 
     <!-- 根据id查询；返回单个对象 -->
-    <select id="selectById" resultType="${pojo}.${table.className}">
+    <select id="find${table.className}ById" resultType="${pojo}.${table.className}">
         select
         <#list table.cloumns as cloumn>
             <#if cloumn_has_next>
@@ -23,7 +23,7 @@
     </select>
 
     <!-- 根据条件查询；返回多个对象-->
-    <select id="selectListByMap" resultType="${pojo}.${table.className}"
+    <select id="find${table.className}sByParam" resultType="${pojo}.${table.className}"
             parameterType="java.util.Map">
         select
         <#list table.cloumns as cloumn>
@@ -47,26 +47,10 @@
     </select>
 
 
-    <!--  查询数量：根据传入的条件查询目标数量；返回查询的数量 -->
-    <select id="selectCountByMap" resultType="int" parameterType="map">
-        select count(*) from `${table.tableName}`
-        <trim prefix="where" prefixOverrides="and | or">
-            <#list table.cloumns as cloumn>
-                <#if cloumn_has_next>
-                    <if test="${cloumn.fieldName} != null">
-                        and ${cloumn.cloumnName}=${r"#{"}${cloumn.fieldName}}
-                    </if>
-                <#else>
-                    <if test="${cloumn.fieldName} != null">
-                        and ${cloumn.cloumnName}=${r"#{"}${cloumn.fieldName}}
-                    </if>
-                </#if>
-            </#list>
-        </trim>
-    </select>
+
 
     <!--  添加：根据传入的参数添加信息；返回影响的行数 -->
-    <insert id="add${table.className}" parameterType="${pojo}.${table.className}"
+    <insert id="insert${table.className}" parameterType="${pojo}.${table.className}"
             <#if table.far == "mysql">
         useGeneratedKeys="true" keyProperty="id"
             </#if>>
@@ -75,7 +59,6 @@
                 select seq_${table.tableName}.nextval as sysId from DUAL
             </selectKey>
         </#if>
-
         insert into `${table.tableName}`(
         <#list table.cloumns as cloumn>
             <#if cloumn_has_next>
@@ -104,7 +87,7 @@
 
 
     <!--  根据id修改：根据传入的参数修改对应的数据库类；返回影响的行数-->
-    <update id="modify${table.className}" parameterType="${pojo}.${table.className}">
+    <update id="update${table.className}" parameterType="${pojo}.${table.className}">
         update `${table.tableName}`
         <trim prefix="set" suffixOverrides=",">
             <#list table.cloumns as cloumn>
@@ -123,11 +106,19 @@
                 </#if>
             </#list>
         </trim>
-        where id = ${r"#{"}id}
+        <trim prefix="where" prefixOverrides="and | or">
+            <#list table.cloumns as cloumn>
+                <#if cloumn_has_next>
+                    <if test="${cloumn.fieldName}If != null">
+                        and ${cloumn.cloumnName}=${r"#{"}${cloumn.fieldName}If}
+                    </if>
+                </#if>
+            </#list>
+        </trim>
     </update>
 
     <!--  删除： 根据map删除对象；返回影响的行数-->
-    <delete id="deleteByMap" parameterType="map">
+    <delete id="delete${table.className}ByParam" parameterType="map">
         delete from `${table.tableName}`
         <trim prefix="where" prefixOverrides="and | or">
             <#list table.cloumns as cloumn>
