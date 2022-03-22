@@ -42,6 +42,8 @@ public class TypeConstant {
         typeMap.put("tinyint", "byte");
         typeMap.put("TINYINT UNSIGNED", "Integer");
         typeMap.put("MEDIUMBLOB", "String");
+        typeMap.put("json", "String");
+        typeMap.put("JSON", "String");
         typeMap.put("SMALLINT UNSIGNED", "Integer");
         typeMap.put("VARBINARY", "String");
         typeMap.put("BINARY", "byte[]");
