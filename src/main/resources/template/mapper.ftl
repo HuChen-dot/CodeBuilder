@@ -87,7 +87,7 @@
 
 
     <!--  根据id修改：根据传入的参数修改对应的数据库类；返回影响的行数-->
-    <update id="update${table.className}" parameterType="${pojo}.${table.className}">
+    <update id="update${table.className}" parameterType="java.util.Map">
         update `${table.tableName}`
         <trim prefix="set" suffixOverrides=",">
             <#list table.cloumns as cloumn>
