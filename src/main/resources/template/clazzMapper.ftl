@@ -17,7 +17,7 @@ public interface ${table.className}Mapper{
     /**
     * 根据条件查询；返回多个对象
     */
-    List<${table.className}> find${table.className}sByParam(Map<String,Object> param);
+    List<${table.className}> find${table.className}s(Map<String,Object> param);
 
 
     /**
@@ -33,6 +33,6 @@ public interface ${table.className}Mapper{
     /**
     *删除： 根据map删除对象；返回影响的行数
     */
-    Integer delete${table.className}ByParam(Map<String,Object> param);
+    Integer delete${table.className}(Map<String,Object> param);
 
 }

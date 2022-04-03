@@ -23,7 +23,7 @@
     </select>
 
     <!-- 根据条件查询；返回多个对象-->
-    <select id="find${table.className}sByParam" resultType="${pojo}.${table.className}"
+    <select id="find${table.className}s" resultType="${pojo}.${table.className}"
             parameterType="java.util.Map">
         select
         <#list table.cloumns as cloumn>
@@ -118,7 +118,7 @@
     </update>
 
     <!--  删除： 根据map删除对象；返回影响的行数-->
-    <delete id="delete${table.className}ByParam" parameterType="map">
+    <delete id="delete${table.className}" parameterType="map">
         delete from `${table.tableName}`
         <trim prefix="where" prefixOverrides="and | or">
             <#list table.cloumns as cloumn>
