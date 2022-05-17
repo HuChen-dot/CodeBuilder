@@ -5,6 +5,11 @@ import ${service}.${table.className}Service;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.*;
+
+/**
+* @author hu.chen
+* @date
+*/
 @Service
 public class ${table.className}ServiceImpl implements ${table.className}Service {
 

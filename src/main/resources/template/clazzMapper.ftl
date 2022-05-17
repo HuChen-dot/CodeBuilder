@@ -6,6 +6,10 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+/**
+* @author hu.chen
+* @date
+*/
 @Mapper
 @Repository
 public interface ${table.className}Mapper{
