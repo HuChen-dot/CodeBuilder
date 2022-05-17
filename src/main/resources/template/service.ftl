@@ -4,42 +4,56 @@ import java.util.List;
 import java.util.Map;
 
 /**
-* Founder : 泽宇
+* @author hu.chen
+* @date
 */
 public interface ${table.className}Service {
-	
-	/**
-	 * 根据id查询；返回单个对象
-	 */
-     ${table.className} get${table.className}ById(Integer id);
 
 	/**
-	 *根据条件查询；返回多个对象
-	 */
-     List<${table.className}>	get${table.className}ListByMap(Map<String,Object> param);
+	  * 根据id查询；返回单个对象
+	  * @param id 主键
+	  * @return
+	*/
+     ${table.className} find${table.className}ById(Integer id);
 
 	/**
-	 * 查询数量：根据传入的条件查询目标数量；返回查询的数量
+ 	 * 根据条件查询；返回多个对象
+	 * @param param
+	 * @return
 	 */
-     Integer get${table.className}CountByMap(Map<String,Object> param);
+     List<${table.className}>	find${table.className}ListByMap(Map<String,Object> param);
+
 
 	/**
-	 * 添加：根据传入的参数添加信息；返回影响的行数
-	 */
+     * 添加：根据传入的参数添加信息；返回影响的行数
+	 * @param ${lowerClassName}
+	 * @return
+	*/
      Integer add${table.className}(${table.className} ${lowerClassName});
+
 
 	/**
 	 * 根据id修改：根据传入的参数修改对应的数据库类；返回影响的行数
-	 */
-     Integer modify${table.className}(${table.className} ${lowerClassName});
+	 * @param ${lowerClassName}
+	 * @return
+	*/
+     Integer update${table.className}(${table.className} ${lowerClassName});
+
 
 	/**
-	 *删除： 根据id删除对象；返回影响的行数
-	 */
+	 * 删除： 根据id删除对象；返回影响的行数
+	 * @param id 主键
+	 * @return
+	*/
      Integer delete${table.className}ById(Integer id);
 
+
 	/**
-	 *根据条件分页查询；返回分页查询后的多个对象
-	 */
+	 * 根据条件分页查询；返回分页查询后的多个对象
+	 * @param param
+	 * @param pageNo 当前页码
+	 * @param pageSize  每页大小
+	 * @return
+	*/
      PageInfo<${table.className}> query${table.className}PageByMap(Map<String,Object> param,Integer pageNo,Integer pageSize);
 }
