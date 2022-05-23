@@ -40,7 +40,7 @@ public interface ${table.className}Mapper{
 
     /**
      * 修改：根据传入的参数修改对应的数据库类；返回影响的行数
-     * @param ${lowerClassName}
+     * @param param
      * @return
     */
     Integer update${table.className}(Map<String,Object> param);
