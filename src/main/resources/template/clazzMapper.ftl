@@ -39,6 +39,15 @@ public interface ${table.className}Mapper{
 
 
     /**
+     * 添加或者修改，此方法借助于数据库唯一索引，如果数据库某一个唯一索引存在则更新，不存在则添加
+     * 该数据表中必须存在某一个字段的唯一索引
+     * @param ${lowerClassName}
+     * @return
+    */
+    Integer insertOrUpdate${table.className}(${table.className} ${lowerClassName});
+
+
+    /**
      * 修改：根据传入的参数修改对应的数据库类；返回影响的行数
      * @param param
      * @return

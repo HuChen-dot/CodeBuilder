@@ -85,6 +85,54 @@
         </#list>
     </insert>
 
+    <!--  添加或者修改 -->
+    <insert id="insertOrUpdate${table.className}" parameterType="${pojo}.${table.className}">
+        <#if table.far == "oracle">
+            <selectKey keyProperty="id" order="BEFORE" resultType="int">
+                select seq_${table.tableName}.nextval as sysId from DUAL
+            </selectKey>
+        </#if>
+        insert into `${table.tableName}`(
+        <#list table.cloumns as cloumn>
+            <#if cloumn_has_next>
+                <#if  cloumn.cloumnName!='id'>
+                    ${cloumn.cloumnName},
+                </#if>
+            <#else>
+                <#if  cloumn.cloumnName!='id'>
+                    ${cloumn.cloumnName})
+                </#if>
+            </#if>
+        </#list>
+        values(
+        <#list table.cloumns as cloumn>
+            <#if cloumn_has_next>
+                <#if  cloumn.cloumnName!='id'>
+                    ${r"#{"}${cloumn.fieldName}},
+                </#if>
+            <#else>
+                <#if  cloumn.cloumnName!='id'>
+                    ${r"#{"}${cloumn.fieldName}})
+                </#if>
+            </#if>
+        </#list>
+    ON DUPLICATE KEY UPDATE
+        <#list table.cloumns as cloumn>
+            <#if cloumn_has_next>
+                <#if  cloumn.cloumnName!='id'>
+                    <if test="${cloumn.fieldName} != null">
+                        ${cloumn.cloumnName}=${r"#{"}${cloumn.fieldName}},
+                    </if>
+                </#if>
+            <#else>
+                <#if  cloumn.cloumnName!='id'>
+                    <if test="${cloumn.fieldName} != null">
+                        ${cloumn.cloumnName}=${r"#{"}${cloumn.fieldName}}
+                    </if>
+                </#if>
+            </#if>
+        </#list>
+    </insert>
 
     <!--  根据id修改：根据传入的参数修改对应的数据库类；返回影响的行数-->
     <update id="update${table.className}" parameterType="java.util.Map">
