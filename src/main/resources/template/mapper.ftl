@@ -47,8 +47,6 @@
     </select>
 
 
-
-
     <!--  添加：根据传入的参数添加信息；返回影响的行数 -->
     <insert id="insert${table.className}" parameterType="${pojo}.${table.className}"
             <#if table.far == "mysql">
@@ -60,29 +58,41 @@
             </selectKey>
         </#if>
         insert into `${table.tableName}`(
-        <#list table.cloumns as cloumn>
-            <#if cloumn_has_next>
-                <#if  cloumn.cloumnName!='id'>
-                    ${cloumn.cloumnName},
+        <trim suffixOverrides=",">
+            <#list table.cloumns as cloumn>
+                <#if cloumn_has_next>
+                    <#if  cloumn.cloumnName!='id'>
+                        <if test="${cloumn.fieldName} != null">
+                            ${cloumn.cloumnName},
+                        </if>
+                    </#if>
+                <#else>
+                    <#if  cloumn.cloumnName!='id'>
+                        <if test="${cloumn.fieldName} != null">
+                            ${cloumn.cloumnName}
+                        </if>
+                    </#if>
                 </#if>
-            <#else>
-                <#if  cloumn.cloumnName!='id'>
-                    ${cloumn.cloumnName})
-                </#if>
-            </#if>
-        </#list>
+            </#list>
+        </trim>)
         values(
-        <#list table.cloumns as cloumn>
-            <#if cloumn_has_next>
-                <#if  cloumn.cloumnName!='id'>
-                    ${r"#{"}${cloumn.fieldName}},
+        <trim suffixOverrides=",">
+            <#list table.cloumns as cloumn>
+                <#if cloumn_has_next>
+                    <#if  cloumn.cloumnName!='id'>
+                        <if test="${cloumn.fieldName} != null">
+                            ${r"#{"}${cloumn.fieldName}},
+                        </if>
+                    </#if>
+                <#else>
+                    <#if  cloumn.cloumnName!='id'>
+                        <if test="${cloumn.fieldName} != null">
+                            ${r"#{"}${cloumn.fieldName}}
+                        </if>
+                    </#if>
                 </#if>
-            <#else>
-                <#if  cloumn.cloumnName!='id'>
-                    ${r"#{"}${cloumn.fieldName}})
-                </#if>
-            </#if>
-        </#list>
+            </#list>
+        </trim>)
     </insert>
 
     <!--  添加或者修改 -->
@@ -93,30 +103,43 @@
             </selectKey>
         </#if>
         insert into `${table.tableName}`(
+        <trim suffixOverrides=",">
         <#list table.cloumns as cloumn>
             <#if cloumn_has_next>
                 <#if  cloumn.cloumnName!='id'>
-                    ${cloumn.cloumnName},
+                    <if test="${cloumn.fieldName} != null">
+                        ${cloumn.cloumnName},
+                    </if>
                 </#if>
             <#else>
                 <#if  cloumn.cloumnName!='id'>
-                    ${cloumn.cloumnName})
+                    <if test="${cloumn.fieldName} != null">
+                        ${cloumn.cloumnName}
+                    </if>
                 </#if>
             </#if>
         </#list>
+        </trim>)
         values(
+        <trim suffixOverrides=",">
         <#list table.cloumns as cloumn>
             <#if cloumn_has_next>
                 <#if  cloumn.cloumnName!='id'>
-                    ${r"#{"}${cloumn.fieldName}},
+                    <if test="${cloumn.fieldName} != null">
+                        ${r"#{"}${cloumn.fieldName}},
+                    </if>
                 </#if>
             <#else>
                 <#if  cloumn.cloumnName!='id'>
-                    ${r"#{"}${cloumn.fieldName}})
+                    <if test="${cloumn.fieldName} != null">
+                        ${r"#{"}${cloumn.fieldName}}
+                    </if>
                 </#if>
             </#if>
         </#list>
+        </trim>)
     ON DUPLICATE KEY UPDATE
+        <trim suffixOverrides=",">
         <#list table.cloumns as cloumn>
             <#if cloumn_has_next>
                 <#if  cloumn.cloumnName!='id'>
@@ -132,6 +155,7 @@
                 </#if>
             </#if>
         </#list>
+        </trim>
     </insert>
 
     <!--  根据id修改：根据传入的参数修改对应的数据库类；返回影响的行数-->
