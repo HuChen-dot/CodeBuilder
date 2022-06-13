@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+import org.apache.ibatis.cursor.Cursor;
 
 /**
 * @author hu.chen
@@ -28,6 +29,14 @@ public interface ${table.className}Mapper{
      * @return
     */
     List<${table.className}> find${table.className}s(Map<String,Object> param);
+
+    /**
+     * 流式查询，可以设置 fetchSize 属性设置一次流查询多少条数据，直至取完数据
+     * 注意：使用流式查询，需要在service层将使用流式查询的方法上添加@Transactional注解，不然会报错
+     * 错误原因为 @Autowired注入的mapper查询一次就会将连接关闭，不会保持链接
+     * @return
+    */
+    Cursor<${table.className}> runningSelect${table.className}s(Map<String,Object> param);
 
 
     /**

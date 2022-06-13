@@ -47,6 +47,31 @@
     </select>
 
 
+    <!-- 流式查询：根据条件查询；可以设置 fetchSize 属性设置一次流查询多少条数据，直至取完数据-->
+    <select id="runningSelect${table.className}s" resultType="${pojo}.${table.className}"
+            parameterType="java.util.Map" fetchSize="200">
+        select
+        <#list table.cloumns as cloumn>
+            <#if cloumn_has_next>
+                ${cloumn.cloumnName} as ${cloumn.fieldName},
+            <#else>
+                ${cloumn.cloumnName} as ${cloumn.fieldName}
+            </#if>
+        </#list>
+        from `${table.tableName}`
+        <trim prefix="where" prefixOverrides="and | or">
+            <#list table.cloumns as cloumn>
+                <#if cloumn_has_next>
+                    <if test="${cloumn.fieldName} != null and ${cloumn.fieldName} != ''">
+                        and ${cloumn.cloumnName}=${r"#{"}${cloumn.fieldName}}
+                    </if>
+                </#if>
+            </#list>
+        </trim>
+        order by id desc
+    </select>
+
+
     <!--  添加：根据传入的参数添加信息；返回影响的行数 -->
     <insert id="insert${table.className}" parameterType="${pojo}.${table.className}"
             <#if table.far == "mysql">
