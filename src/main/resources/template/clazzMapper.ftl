@@ -65,7 +65,7 @@ public interface ${table.className}Mapper{
 
     /**
      * 删除： 根据id删除对象；返回影响的行数
-     * @param id 主键
+     * @param param 参数
      * @return
     */
     Integer delete${table.className}(Map<String,Object> param);
