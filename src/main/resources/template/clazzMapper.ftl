@@ -40,7 +40,7 @@ public interface ${table.className}Mapper{
 
     /**
      * 批量添加：根据传入的参数添加信息
-     * @param tQccCompanyFromProducts
+     * @param list
      * @return
     */
     Integer batchInsert${table.className}(@Param("list") List<${table.className}> list);
