@@ -37,7 +37,7 @@
         <trim prefix="where" prefixOverrides="and | or">
             <#list table.cloumns as cloumn>
                 <#if cloumn_has_next>
-                    <if test="${cloumn.fieldName} != null">
+                    <if test="${cloumn.fieldName} != null and ${cloumn.fieldName} != ''">
                         and ${cloumn.cloumnName}=${r"#{"}${cloumn.fieldName}}
                     </if>
                 </#if>
@@ -62,13 +62,13 @@
             <#list table.cloumns as cloumn>
                 <#if cloumn_has_next>
                     <#if  cloumn.cloumnName!='id'>
-                        <if test="${cloumn.fieldName} != null">
+                        <if test="${cloumn.fieldName} != null and ${cloumn.fieldName} != ''">
                             ${cloumn.cloumnName},
                         </if>
                     </#if>
                 <#else>
                     <#if  cloumn.cloumnName!='id'>
-                        <if test="${cloumn.fieldName} != null">
+                        <if test="${cloumn.fieldName} != null and ${cloumn.fieldName} != ''">
                             ${cloumn.cloumnName}
                         </if>
                     </#if>
@@ -80,19 +80,51 @@
             <#list table.cloumns as cloumn>
                 <#if cloumn_has_next>
                     <#if  cloumn.cloumnName!='id'>
-                        <if test="${cloumn.fieldName} != null">
+                        <if test="${cloumn.fieldName} != null and ${cloumn.fieldName} != ''">
                             ${r"#{"}${cloumn.fieldName}},
                         </if>
                     </#if>
                 <#else>
                     <#if  cloumn.cloumnName!='id'>
-                        <if test="${cloumn.fieldName} != null">
+                        <if test="${cloumn.fieldName} != null and ${cloumn.fieldName} != ''">
                             ${r"#{"}${cloumn.fieldName}}
                         </if>
                     </#if>
                 </#if>
             </#list>
         </trim>)
+    </insert>
+
+    <!--  批量添加：根据传入的参数添加信息 -->
+    <insert id="batchInsert${table.className}" parameterType="list" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+        insert into `${table.tableName}`(
+            <#list table.cloumns as cloumn>
+                <#if cloumn_has_next>
+                    <#if  cloumn.cloumnName!='id'>
+                            ${cloumn.cloumnName},
+                    </#if>
+                <#else>
+                    <#if  cloumn.cloumnName!='id'>
+                            ${cloumn.cloumnName}
+                    </#if>
+                </#if>
+            </#list>)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (
+            <#list table.cloumns as cloumn>
+                <#if cloumn_has_next>
+                    <#if  cloumn.cloumnName!='id'>
+                            ${r"#{item."}${cloumn.fieldName}},
+                    </#if>
+                <#else>
+                    <#if  cloumn.cloumnName!='id'>
+                            ${r"#{item."}${cloumn.fieldName}}
+                    </#if>
+                </#if>
+            </#list>
+            )
+        </foreach>
     </insert>
 
     <!--  添加或者修改 -->
@@ -107,13 +139,13 @@
         <#list table.cloumns as cloumn>
             <#if cloumn_has_next>
                 <#if  cloumn.cloumnName!='id'>
-                    <if test="${cloumn.fieldName} != null">
+                    <if test="${cloumn.fieldName} != null and ${cloumn.fieldName} != ''">
                         ${cloumn.cloumnName},
                     </if>
                 </#if>
             <#else>
                 <#if  cloumn.cloumnName!='id'>
-                    <if test="${cloumn.fieldName} != null">
+                    <if test="${cloumn.fieldName} != null and ${cloumn.fieldName} != ''">
                         ${cloumn.cloumnName}
                     </if>
                 </#if>
@@ -125,13 +157,13 @@
         <#list table.cloumns as cloumn>
             <#if cloumn_has_next>
                 <#if  cloumn.cloumnName!='id'>
-                    <if test="${cloumn.fieldName} != null">
+                    <if test="${cloumn.fieldName} != null and ${cloumn.fieldName} != ''">
                         ${r"#{"}${cloumn.fieldName}},
                     </if>
                 </#if>
             <#else>
                 <#if  cloumn.cloumnName!='id'>
-                    <if test="${cloumn.fieldName} != null">
+                    <if test="${cloumn.fieldName} != null and ${cloumn.fieldName} != ''">
                         ${r"#{"}${cloumn.fieldName}}
                     </if>
                 </#if>
@@ -143,13 +175,13 @@
         <#list table.cloumns as cloumn>
             <#if cloumn_has_next>
                 <#if  cloumn.cloumnName!='id'>
-                    <if test="${cloumn.fieldName} != null">
+                    <if test="${cloumn.fieldName} != null and ${cloumn.fieldName} != ''">
                         ${cloumn.cloumnName}=${r"#{"}${cloumn.fieldName}},
                     </if>
                 </#if>
             <#else>
                 <#if  cloumn.cloumnName!='id'>
-                    <if test="${cloumn.fieldName} != null">
+                    <if test="${cloumn.fieldName} != null and ${cloumn.fieldName} != ''">
                         ${cloumn.cloumnName}=${r"#{"}${cloumn.fieldName}}
                     </if>
                 </#if>
@@ -165,13 +197,13 @@
             <#list table.cloumns as cloumn>
                 <#if cloumn_has_next>
                     <#if  cloumn.cloumnName!='id'>
-                        <if test="${cloumn.fieldName} != null">
+                        <if test="${cloumn.fieldName} != null and ${cloumn.fieldName} != ''">
                             ${cloumn.cloumnName}=${r"#{"}${cloumn.fieldName}},
                         </if>
                     </#if>
                 <#else>
                     <#if  cloumn.cloumnName!='id'>
-                        <if test="${cloumn.fieldName} != null">
+                        <if test="${cloumn.fieldName} != null and ${cloumn.fieldName} != ''">
                             ${cloumn.cloumnName}=${r"#{"}${cloumn.fieldName}}
                         </if>
                     </#if>
@@ -181,7 +213,7 @@
         <trim prefix="where" prefixOverrides="and | or">
             <#list table.cloumns as cloumn>
                 <#if cloumn_has_next>
-                    <if test="${cloumn.fieldName}If != null">
+                    <if test="${cloumn.fieldName}If != null and ${cloumn.fieldName} != ''">
                         and ${cloumn.cloumnName}=${r"#{"}${cloumn.fieldName}If}
                     </if>
                 </#if>
@@ -195,7 +227,7 @@
         <trim prefix="where" prefixOverrides="and | or">
             <#list table.cloumns as cloumn>
                 <#if cloumn_has_next>
-                    <if test="${cloumn.fieldName} != null">
+                    <if test="${cloumn.fieldName} != null and ${cloumn.fieldName} != ''">
                         and ${cloumn.cloumnName}=${r"#{"}${cloumn.fieldName}}
                     </if>
                 </#if>
