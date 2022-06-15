@@ -5,7 +5,7 @@
 <mapper namespace="${mapper}.${table.className}Mapper">
 
     <!-- 根据id查询；返回单个对象 -->
-    <select id="find${table.className}ById" resultType="${pojo}.${table.className}">
+    <select id="selectById" resultType="${pojo}.${table.className}">
         select
         <#list table.cloumns as cloumn>
             <#if cloumn_has_next>
@@ -23,7 +23,7 @@
     </select>
 
     <!-- 根据条件查询；返回多个对象-->
-    <select id="find${table.className}s" resultType="${pojo}.${table.className}"
+    <select id="selectByWideFactor" resultType="${pojo}.${table.className}"
             parameterType="java.util.Map">
         select
         <#list table.cloumns as cloumn>
@@ -48,7 +48,7 @@
 
 
     <!-- 流式查询：根据条件查询；可以设置 fetchSize 属性设置一次流查询多少条数据，直至取完数据-->
-    <select id="runningSelect${table.className}s" resultType="${pojo}.${table.className}"
+    <select id="flowSelectByWideFactor" resultType="${pojo}.${table.className}"
             parameterType="java.util.Map" fetchSize="200">
         select
         <#list table.cloumns as cloumn>
@@ -73,7 +73,7 @@
 
 
     <!--  添加：根据传入的参数添加信息；返回影响的行数 -->
-    <insert id="insert${table.className}" parameterType="${pojo}.${table.className}"
+    <insert id="insert" parameterType="${pojo}.${table.className}"
             <#if table.far == "mysql">
         useGeneratedKeys="true" keyProperty="id"
             </#if>>
@@ -141,7 +141,7 @@
     </insert>
 
     <!--  批量添加：根据传入的参数添加信息 -->
-    <insert id="batchInsert${table.className}" parameterType="list" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+    <insert id="batchInsert" parameterType="list" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
         insert into `${table.tableName}`(
             <#list table.cloumns as cloumn>
                 <#if cloumn_has_next>
@@ -183,7 +183,7 @@
     </insert>
 
     <!--  添加或者修改 -->
-    <insert id="insertOrUpdate${table.className}" parameterType="${pojo}.${table.className}">
+    <insert id="insertOrUpdate" parameterType="${pojo}.${table.className}">
         <#if table.far == "oracle">
             <selectKey keyProperty="id" order="BEFORE" resultType="int">
                 select seq_${table.tableName}.nextval as sysId from DUAL
@@ -276,7 +276,7 @@
     </insert>
 
     <!--  根据id修改：根据传入的参数修改对应的数据库类；返回影响的行数-->
-    <update id="update${table.className}" parameterType="java.util.Map">
+    <update id="updateByWideFactor" parameterType="java.util.Map">
         update `${table.tableName}`
         <trim prefix="set" suffixOverrides=",">
             <#list table.cloumns as cloumn>
@@ -317,7 +317,7 @@
     </update>
 
     <!--  删除： 根据map删除对象；返回影响的行数-->
-    <delete id="delete${table.className}" parameterType="map">
+    <delete id="deleteByWideFactor" parameterType="map">
         delete from `${table.tableName}`
         <trim prefix="where" prefixOverrides="and | or">
             <#list table.cloumns as cloumn>

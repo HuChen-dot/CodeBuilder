@@ -20,7 +20,7 @@ public interface ${table.className}Mapper{
      * @param id 主键
      * @return
     */
-    ${table.className} find${table.className}ById(@Param(value = "id") Integer id);
+    ${table.className} selectById(@Param(value = "id") Integer id);
 
 
     /**
@@ -28,7 +28,7 @@ public interface ${table.className}Mapper{
      * @param param
      * @return
     */
-    List<${table.className}> find${table.className}s(Map<String,Object> param);
+    List<${table.className}> selectByWideFactor(Map<String,Object> param);
 
     /**
      * 流式查询，可以设置 fetchSize 属性设置一次流查询多少条数据，直至取完数据
@@ -36,7 +36,7 @@ public interface ${table.className}Mapper{
      * 错误原因为 @Autowired注入的mapper查询一次就会将连接关闭，不会保持链接
      * @return
     */
-    Cursor<${table.className}> runningSelect${table.className}s(Map<String,Object> param);
+    Cursor<${table.className}> flowSelectByWideFactor(Map<String,Object> param);
 
 
     /**
@@ -44,7 +44,7 @@ public interface ${table.className}Mapper{
      * @param ${lowerClassName}
      * @return
     */
-    Integer insert${table.className}(${table.className} ${lowerClassName});
+    Integer insert(${table.className} ${lowerClassName});
 
 
     /**
@@ -52,7 +52,7 @@ public interface ${table.className}Mapper{
      * @param list
      * @return
     */
-    Integer batchInsert${table.className}(@Param("list") List<${table.className}> list);
+    Integer batchInsert(@Param("list") List<${table.className}> list);
 
 
     /**
@@ -61,7 +61,7 @@ public interface ${table.className}Mapper{
      * @param ${lowerClassName}
      * @return
     */
-    Integer insertOrUpdate${table.className}(${table.className} ${lowerClassName});
+    Integer insertOrUpdate(${table.className} ${lowerClassName});
 
 
     /**
@@ -69,7 +69,7 @@ public interface ${table.className}Mapper{
      * @param param
      * @return
     */
-    Integer update${table.className}(Map<String,Object> param);
+    Integer updateByWideFactor(Map<String,Object> param);
 
 
     /**
@@ -77,6 +77,6 @@ public interface ${table.className}Mapper{
      * @param param 参数
      * @return
     */
-    Integer delete${table.className}(Map<String,Object> param);
+    Integer deleteByWideFactor(Map<String,Object> param);
 
 }
