@@ -4,7 +4,6 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
 import org.apache.ibatis.cursor.Cursor;
 
 /**
@@ -12,7 +11,6 @@ import org.apache.ibatis.cursor.Cursor;
 * @date
 */
 @Mapper
-@Repository
 public interface ${table.className}Mapper{
 
     /**
