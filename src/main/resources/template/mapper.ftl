@@ -23,7 +23,7 @@
     </select>
 
     <!-- 根据条件查询；返回多个对象-->
-    <select id="selectByWideFactor" resultType="${pojo}.${table.className}"
+    <select id="select" resultType="${pojo}.${table.className}"
             parameterType="java.util.Map">
         select
         <#list table.cloumns as cloumn>
@@ -48,7 +48,7 @@
 
 
     <!-- 流式查询：根据条件查询；可以设置 fetchSize 属性设置一次流查询多少条数据，直至取完数据-->
-    <select id="flowSelectByWideFactor" resultType="${pojo}.${table.className}"
+    <select id="flowSelect" resultType="${pojo}.${table.className}"
             parameterType="java.util.Map" fetchSize="200">
         select
         <#list table.cloumns as cloumn>
@@ -276,7 +276,7 @@
     </insert>
 
     <!--  根据id修改：根据传入的参数修改对应的数据库类；返回影响的行数-->
-    <update id="updateByWideFactor" parameterType="java.util.Map">
+    <update id="update" parameterType="java.util.Map">
         update `${table.tableName}`
         <trim prefix="set" suffixOverrides=",">
             <#list table.cloumns as cloumn>
@@ -317,7 +317,7 @@
     </update>
 
     <!--  删除： 根据map删除对象；返回影响的行数-->
-    <delete id="deleteByWideFactor" parameterType="map">
+    <delete id="delete" parameterType="map">
         delete from `${table.tableName}`
         <trim prefix="where" prefixOverrides="and | or">
             <#list table.cloumns as cloumn>

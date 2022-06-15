@@ -34,7 +34,7 @@ public class ${table.className}ServiceImpl implements ${table.className}Service 
         */
         @Override
         public List<${table.className}>  find${table.className}ListByMap(Map<String,Object> param){
-                return ${lowerClassName}Mapper.selectByWideFactor(param);
+                return ${lowerClassName}Mapper.select(param);
         }
 
         /**
@@ -57,7 +57,7 @@ public class ${table.className}ServiceImpl implements ${table.className}Service 
                 Map<String,Object> param = new ConcurrentHashMap<>()
                 // 将对象转换成 map ，并设置值
                 map.put("idIf", "id");
-                return ${lowerClassName}Mapper.updateByWideFactor(param);
+                return ${lowerClassName}Mapper.update(param);
         }
 
         /**
@@ -69,7 +69,7 @@ public class ${table.className}ServiceImpl implements ${table.className}Service 
         public Integer delete${table.className}ById(Integer id){
                 Map<String, Object> map = new HashMap<>();
                 map.put("id", id);
-                return ${lowerClassName}Mapper.deleteByWideFactor(map);
+                return ${lowerClassName}Mapper.delete(map);
         }
 
 
@@ -84,7 +84,7 @@ public class ${table.className}ServiceImpl implements ${table.className}Service 
                 //设置分页的起始页数和页面容量
                 PageHelper.startPage(pageNo, pageSize);
                 //正常查询数据库，mybatis拦截器已经把原始sql拦截下来做好了分页
-                List<${table.className}> ${lowerClassName}List = ${lowerClassName}Mapper.selectByWideFactor(param);
+                List<${table.className}> ${lowerClassName}List = ${lowerClassName}Mapper.select(param);
                 //把查询出来分页好的数据放进插件的分页对象中
                 PageInfo<${table.className}> info = new  PageInfo<${table.className}>(${lowerClassName}List);
                 return info;

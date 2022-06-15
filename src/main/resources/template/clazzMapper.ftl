@@ -26,7 +26,7 @@ public interface ${table.className}Mapper{
      * @param param
      * @return
     */
-    List<${table.className}> selectByWideFactor(Map<String,Object> param);
+    List<${table.className}> select(Map<String,Object> param);
 
     /**
      * 流式查询，可以设置 fetchSize 属性设置一次流查询多少条数据，直至取完数据
@@ -34,7 +34,7 @@ public interface ${table.className}Mapper{
      * 错误原因为 @Autowired注入的mapper查询一次就会将连接关闭，不会保持链接
      * @return
     */
-    Cursor<${table.className}> flowSelectByWideFactor(Map<String,Object> param);
+    Cursor<${table.className}> flowSelect(Map<String,Object> param);
 
 
     /**
@@ -67,7 +67,7 @@ public interface ${table.className}Mapper{
      * @param param
      * @return
     */
-    Integer updateByWideFactor(Map<String,Object> param);
+    Integer update(Map<String,Object> param);
 
 
     /**
@@ -75,6 +75,6 @@ public interface ${table.className}Mapper{
      * @param param 参数
      * @return
     */
-    Integer deleteByWideFactor(Map<String,Object> param);
+    Integer delete(Map<String,Object> param);
 
 }
