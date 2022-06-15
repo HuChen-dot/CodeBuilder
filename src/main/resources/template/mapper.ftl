@@ -87,15 +87,25 @@
             <#list table.cloumns as cloumn>
                 <#if cloumn_has_next>
                     <#if  cloumn.cloumnName!='id'>
+                        <#if  cloumn.cloumnName=='update_time' || cloumn.cloumnName=='create_time'>
+                            ${cloumn.cloumnName},
+                        </#if>
+                        <#if  cloumn.cloumnName!='update_time' && cloumn.cloumnName!='create_time'>
                         <if test="${cloumn.fieldName} != null and ${cloumn.fieldName} != ''">
                             ${cloumn.cloumnName},
                         </if>
+                        </#if>
                     </#if>
                 <#else>
                     <#if  cloumn.cloumnName!='id'>
+                        <#if  cloumn.cloumnName=='update_time' || cloumn.cloumnName=='create_time'>
+                            ${cloumn.cloumnName}
+                        </#if>
+                        <#if  cloumn.cloumnName!='update_time' && cloumn.cloumnName!='create_time'>
                         <if test="${cloumn.fieldName} != null and ${cloumn.fieldName} != ''">
                             ${cloumn.cloumnName}
                         </if>
+                        </#if>
                     </#if>
                 </#if>
             </#list>
@@ -105,15 +115,25 @@
             <#list table.cloumns as cloumn>
                 <#if cloumn_has_next>
                     <#if  cloumn.cloumnName!='id'>
+                        <#if  cloumn.cloumnName=='update_time' || cloumn.cloumnName=='create_time'>
+                            now(),
+                        </#if>
+                         <#if  cloumn.cloumnName!='update_time' && cloumn.cloumnName!='create_time'>
                         <if test="${cloumn.fieldName} != null and ${cloumn.fieldName} != ''">
                             ${r"#{"}${cloumn.fieldName}},
                         </if>
+                         </#if>
                     </#if>
                 <#else>
                     <#if  cloumn.cloumnName!='id'>
+                        <#if  cloumn.cloumnName=='update_time' || cloumn.cloumnName=='create_time'>
+                            now()
+                        </#if>
+                        <#if  cloumn.cloumnName!='update_time' && cloumn.cloumnName!='create_time'>
                         <if test="${cloumn.fieldName} != null and ${cloumn.fieldName} != ''">
                             ${r"#{"}${cloumn.fieldName}}
                         </if>
+                          </#if>
                     </#if>
                 </#if>
             </#list>
@@ -140,11 +160,21 @@
             <#list table.cloumns as cloumn>
                 <#if cloumn_has_next>
                     <#if  cloumn.cloumnName!='id'>
+                        <#if  cloumn.cloumnName=='update_time' || cloumn.cloumnName=='create_time'>
+                            now(),
+                        </#if>
+                        <#if  cloumn.cloumnName!='update_time' && cloumn.cloumnName!='create_time'>
                             ${r"#{item."}${cloumn.fieldName}},
+                        </#if>
                     </#if>
                 <#else>
                     <#if  cloumn.cloumnName!='id'>
+                        <#if  cloumn.cloumnName=='update_time' || cloumn.cloumnName=='create_time'>
+                            now()
+                        </#if>
+                        <#if  cloumn.cloumnName!='update_time' && cloumn.cloumnName!='create_time'>
                             ${r"#{item."}${cloumn.fieldName}}
+                        </#if>
                     </#if>
                 </#if>
             </#list>
@@ -164,15 +194,25 @@
         <#list table.cloumns as cloumn>
             <#if cloumn_has_next>
                 <#if  cloumn.cloumnName!='id'>
+                    <#if  cloumn.cloumnName=='update_time' || cloumn.cloumnName=='create_time'>
+                        ${cloumn.cloumnName},
+                    </#if>
+                    <#if  cloumn.cloumnName!='update_time' && cloumn.cloumnName!='create_time'>
                     <if test="${cloumn.fieldName} != null and ${cloumn.fieldName} != ''">
                         ${cloumn.cloumnName},
                     </if>
+                    </#if>
                 </#if>
             <#else>
                 <#if  cloumn.cloumnName!='id'>
+                    <#if  cloumn.cloumnName=='update_time' || cloumn.cloumnName=='create_time'>
+                        ${cloumn.cloumnName}
+                    </#if>
+                    <#if  cloumn.cloumnName!='update_time' && cloumn.cloumnName!='create_time'>
                     <if test="${cloumn.fieldName} != null and ${cloumn.fieldName} != ''">
                         ${cloumn.cloumnName}
                     </if>
+                    </#if>
                 </#if>
             </#if>
         </#list>
@@ -182,15 +222,25 @@
         <#list table.cloumns as cloumn>
             <#if cloumn_has_next>
                 <#if  cloumn.cloumnName!='id'>
+                    <#if  cloumn.cloumnName=='update_time' || cloumn.cloumnName=='create_time'>
+                        now(),
+                    </#if>
+                    <#if  cloumn.cloumnName!='update_time' && cloumn.cloumnName!='create_time'>
                     <if test="${cloumn.fieldName} != null and ${cloumn.fieldName} != ''">
                         ${r"#{"}${cloumn.fieldName}},
                     </if>
+                    </#if>
                 </#if>
             <#else>
                 <#if  cloumn.cloumnName!='id'>
+                    <#if  cloumn.cloumnName=='update_time' || cloumn.cloumnName=='create_time'>
+                        now()
+                    </#if>
+                    <#if  cloumn.cloumnName!='update_time' && cloumn.cloumnName!='create_time'>
                     <if test="${cloumn.fieldName} != null and ${cloumn.fieldName} != ''">
                         ${r"#{"}${cloumn.fieldName}}
                     </if>
+                    </#if>
                 </#if>
             </#if>
         </#list>
@@ -200,15 +250,25 @@
         <#list table.cloumns as cloumn>
             <#if cloumn_has_next>
                 <#if  cloumn.cloumnName!='id'>
+                    <#if  cloumn.cloumnName=='update_time'>
+                            ${cloumn.cloumnName}=now(),
+                    </#if>
+                    <#if  cloumn.cloumnName!='update_time'>
                     <if test="${cloumn.fieldName} != null and ${cloumn.fieldName} != ''">
                         ${cloumn.cloumnName}=${r"#{"}${cloumn.fieldName}},
                     </if>
+                    </#if>
                 </#if>
             <#else>
                 <#if  cloumn.cloumnName!='id'>
+                    <#if  cloumn.cloumnName=='update_time'>
+                        ${cloumn.cloumnName}=now()
+                    </#if>
+                    <#if  cloumn.cloumnName!='update_time'>
                     <if test="${cloumn.fieldName} != null and ${cloumn.fieldName} != ''">
                         ${cloumn.cloumnName}=${r"#{"}${cloumn.fieldName}}
                     </if>
+                    </#if>
                 </#if>
             </#if>
         </#list>
@@ -222,15 +282,25 @@
             <#list table.cloumns as cloumn>
                 <#if cloumn_has_next>
                     <#if  cloumn.cloumnName!='id'>
+                        <#if  cloumn.cloumnName=='update_time'>
+                                ${cloumn.cloumnName}=now(),
+                        </#if>
+                        <#if  cloumn.cloumnName!='update_time'>
                         <if test="${cloumn.fieldName} != null and ${cloumn.fieldName} != ''">
                             ${cloumn.cloumnName}=${r"#{"}${cloumn.fieldName}},
                         </if>
+                        </#if>
                     </#if>
                 <#else>
                     <#if  cloumn.cloumnName!='id'>
+                        <#if  cloumn.cloumnName=='update_time'>
+                            ${cloumn.cloumnName}=now()
+                        </#if>
+                        <#if  cloumn.cloumnName!='update_time'>
                         <if test="${cloumn.fieldName} != null and ${cloumn.fieldName} != ''">
                             ${cloumn.cloumnName}=${r"#{"}${cloumn.fieldName}}
                         </if>
+                        </#if>
                     </#if>
                 </#if>
             </#list>
