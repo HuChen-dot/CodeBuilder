@@ -43,7 +43,6 @@
                 </#if>
             </#list>
         </trim>
-        order by id desc
     </select>
 
 
@@ -68,7 +67,6 @@
                 </#if>
             </#list>
         </trim>
-        order by id desc
     </select>
 
 
