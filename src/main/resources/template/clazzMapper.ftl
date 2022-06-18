@@ -14,7 +14,7 @@ import org.apache.ibatis.cursor.Cursor;
 public interface ${table.className}Mapper{
 
     /**
-     * 根据主键查询
+     * 主键查询
      * @param primaryKey 主键
      * @return
     */
@@ -22,7 +22,7 @@ public interface ${table.className}Mapper{
 
 
     /**
-     * 根据条件查询
+     * 多条件查询
      * @param param
      * @return
     */
@@ -40,7 +40,7 @@ public interface ${table.className}Mapper{
 
 
     /**
-     * 添加：根据传入的参数添加信息；返回影响的行数
+     * 添加
      * @param ${lowerClassName}
      * @return
     */
@@ -48,7 +48,7 @@ public interface ${table.className}Mapper{
 
 
     /**
-     * 批量添加：根据传入的参数添加信息
+     * 批量添加
      * @param list
      * @return
     */
@@ -56,7 +56,8 @@ public interface ${table.className}Mapper{
 
 
     /**
-     * 添加或者修改，此方法借助于数据库唯一索引，如果数据库某一个唯一索引存在则更新，不存在则添加
+     * 添加或者修改
+     * 此方法借助于数据库唯一索引，如果数据库某一个唯一索引存在则更新，不存在则添加
      * 该数据表中必须存在某一个字段的唯一索引
      * @param ${lowerClassName}
      * @return
@@ -65,7 +66,7 @@ public interface ${table.className}Mapper{
 
 
     /**
-     * 修改：根据传入的参数修改对应的数据库类；返回影响的行数
+     * 修改
      * @param param
      * @return
     */
@@ -73,7 +74,7 @@ public interface ${table.className}Mapper{
 
 
     /**
-     * 删除： 根据id删除对象；返回影响的行数
+     * 删除
      * @param param 参数
      * @return
     */

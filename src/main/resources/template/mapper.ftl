@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="${mapper}.${table.className}Mapper">
 
-    <!-- 根据id查询；返回单个对象 -->
+    <!-- 主键查询 -->
     <select id="selectByPrimaryKey" resultType="${pojo}.${table.className}">
         select
         <#list table.cloumns as cloumn>
@@ -23,7 +23,7 @@
             </#list>
     </select>
 
-    <!-- 根据条件查询；返回多个对象-->
+    <!-- 多条件查询-->
     <select id="select" resultType="${pojo}.${table.className}"
             parameterType="java.util.Map">
         select
@@ -71,7 +71,7 @@
     </select>
 
 
-    <!--  添加：根据传入的参数添加信息；返回影响的行数 -->
+    <!--  添加 -->
     <insert id="insert" parameterType="${pojo}.${table.className}"
             <#if table.far == "mysql">
         useGeneratedKeys="true" keyProperty="id"
@@ -131,7 +131,7 @@
         </trim>)
     </insert>
 
-    <!--  批量添加：根据传入的参数添加信息 -->
+    <!--  批量添加 -->
     <insert id="batchInsert" parameterType="list" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
         insert into `${table.tableName}`(
             <#list table.cloumns as cloumn>
@@ -258,7 +258,7 @@
         </trim>
     </insert>
 
-    <!--  根据id修改：根据传入的参数修改对应的数据库类；返回影响的行数-->
+    <!--  修改 -->
     <update id="update" parameterType="java.util.Map">
         update `${table.tableName}`
         <trim prefix="set" suffixOverrides=",">
@@ -299,7 +299,7 @@
         </trim>
     </update>
 
-    <!--  删除： 根据map删除对象；返回影响的行数-->
+    <!--  删除 -->
     <delete id="delete" parameterType="map">
         delete from `${table.tableName}`
         <trim prefix="where" prefixOverrides="and | or">
