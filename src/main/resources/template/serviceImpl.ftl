@@ -18,13 +18,13 @@ public class ${table.className}ServiceImpl implements ${table.className}Service 
         private ${table.className}Mapper ${lowerClassName}Mapper;
 
         /**
-         * 根据id查询；返回单个对象
-         * @param id 主键
+         * 根据主键查询
+         * @param primaryKey 主键
          * @return
         */
         @Override
-        public ${table.className} find${table.className}ById(Integer id){
-                return ${lowerClassName}Mapper.selectById(id);
+        public ${table.className} find${table.className}ByPrimaryKey(Integer primaryKey){
+                return ${lowerClassName}Mapper.selectByPrimaryKey(primaryKey);
         }
 
         /**

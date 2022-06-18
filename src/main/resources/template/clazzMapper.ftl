@@ -14,15 +14,15 @@ import org.apache.ibatis.cursor.Cursor;
 public interface ${table.className}Mapper{
 
     /**
-     * 根据id查询；返回单个对象
-     * @param id 主键
+     * 根据主键查询
+     * @param primaryKey 主键
      * @return
     */
-    ${table.className} selectById(@Param(value = "id") Integer id);
+    ${table.className} selectByPrimaryKey(@Param(value = "primaryKey") Integer primaryKey);
 
 
     /**
-     * 根据条件查询；返回多个对象
+     * 根据条件查询
      * @param param
      * @return
     */

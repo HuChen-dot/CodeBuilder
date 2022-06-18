@@ -5,7 +5,7 @@
 <mapper namespace="${mapper}.${table.className}Mapper">
 
     <!-- 根据id查询；返回单个对象 -->
-    <select id="selectById" resultType="${pojo}.${table.className}">
+    <select id="selectByPrimaryKey" resultType="${pojo}.${table.className}">
         select
         <#list table.cloumns as cloumn>
             <#if cloumn_has_next>
@@ -15,11 +15,12 @@
             </#if>
         </#list>
         from `${table.tableName}`
-        <trim prefix="where" prefixOverrides="and | or">
-            <if test="id != null">
-                and id=${r"#{id}"}
-            </if>
-        </trim>
+            <#list table.cloumns as cloumn>
+                <#if cloumn_index==0>
+        where ${cloumn.cloumnName}=${r"#{"}primaryKey}
+                    <#break>
+                </#if>
+            </#list>
     </select>
 
     <!-- 根据条件查询；返回多个对象-->

@@ -10,11 +10,11 @@ import java.util.Map;
 public interface ${table.className}Service {
 
 	/**
-	  * 根据id查询；返回单个对象
-	  * @param id 主键
+	  * 根据主键查询
+	  * @param primaryKey 主键
 	  * @return
 	*/
-     ${table.className} find${table.className}ById(Integer id);
+     ${table.className} find${table.className}ByPrimaryKey(Integer primaryKey);
 
 	/**
  	 * 根据条件查询；返回多个对象
