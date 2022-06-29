@@ -3,7 +3,6 @@ import ${mapper}.${table.className}Mapper;
 import ${pojo}.${table.className};
 import ${service}.${table.className}Service;
 import org.springframework.stereotype.Service;
-import javax.annotation.Resource;
 import java.util.*;
 
 /**
@@ -54,9 +53,9 @@ public class ${table.className}ServiceImpl implements ${table.className}Service 
         */
         @Override
         public Integer update${table.className}(${table.className} ${lowerClassName}){
-                Map<String,Object> param = new ConcurrentHashMap<>()
+                Map<String,Object> param = new ConcurrentHashMap<>();
                 // 将对象转换成 map ，并设置值
-                map.put("idIf", "id");
+                param.put("idIf", "id");
                 return ${lowerClassName}Mapper.update(param);
         }
 
@@ -67,8 +66,8 @@ public class ${table.className}ServiceImpl implements ${table.className}Service 
         */
         @Override
         public Integer delete${table.className}ById(Integer id){
-                Map<String, Object> map = new HashMap<>();
-                map.put("id", id);
+                Map<String, Object> param = new HashMap<>();
+                param.put("id", id);
                 return ${lowerClassName}Mapper.delete(map);
         }
 

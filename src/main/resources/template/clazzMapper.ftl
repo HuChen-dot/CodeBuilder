@@ -18,7 +18,7 @@ public interface ${table.className}Mapper{
      * @param primaryKey 主键
      * @return
     */
-    ${table.className} selectByPrimaryKey(@Param(value = "primaryKey") Integer primaryKey);
+    ${table.className} selectByPrimaryKey(@Param(value = "primaryKey") Long primaryKey);
 
 
     /**
