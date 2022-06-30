@@ -184,23 +184,19 @@
         <trim suffixOverrides=",">
         <#list table.cloumns as cloumn>
             <#if cloumn_has_next>
-                <#if  cloumn.cloumnName!='id'>
                     <#if  cloumn.cloumnName=='update_time' || cloumn.cloumnName=='create_time'>
                         ${cloumn.cloumnName},
                     </#if>
                     <#if  cloumn.cloumnName!='update_time' && cloumn.cloumnName!='create_time'>
                         ${cloumn.cloumnName},
                     </#if>
-                </#if>
             <#else>
-                <#if  cloumn.cloumnName!='id'>
                     <#if  cloumn.cloumnName=='update_time' || cloumn.cloumnName=='create_time'>
                         ${cloumn.cloumnName}
                     </#if>
                     <#if  cloumn.cloumnName!='update_time' && cloumn.cloumnName!='create_time'>
                         ${cloumn.cloumnName}
                     </#if>
-                </#if>
             </#if>
         </#list>
         </trim>)
@@ -208,23 +204,19 @@
         <trim suffixOverrides=",">
         <#list table.cloumns as cloumn>
             <#if cloumn_has_next>
-                <#if  cloumn.cloumnName!='id'>
                     <#if  cloumn.cloumnName=='update_time' || cloumn.cloumnName=='create_time'>
                         now(),
                     </#if>
                     <#if  cloumn.cloumnName!='update_time' && cloumn.cloumnName!='create_time'>
                         ${r"#{"}${cloumn.fieldName}},
                     </#if>
-                </#if>
             <#else>
-                <#if  cloumn.cloumnName!='id'>
                     <#if  cloumn.cloumnName=='update_time' || cloumn.cloumnName=='create_time'>
                         now()
                     </#if>
                     <#if  cloumn.cloumnName!='update_time' && cloumn.cloumnName!='create_time'>
                         ${r"#{"}${cloumn.fieldName}}
                     </#if>
-                </#if>
             </#if>
         </#list>
         </trim>)

@@ -32,7 +32,7 @@ public class ${table.className}ServiceImpl implements ${table.className}Service 
          * @return
         */
         @Override
-        public List<${table.className}>  find${table.className}ListByMap(Map<String,Object> param){
+        public List<${table.className}>  find${table.className}List(Map<String,Object> param){
                 return ${lowerClassName}Mapper.select(param);
         }
 

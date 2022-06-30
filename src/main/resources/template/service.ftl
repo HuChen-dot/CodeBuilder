@@ -21,7 +21,7 @@ public interface ${table.className}Service {
 	 * @param param
 	 * @return
 	 */
-     List<${table.className}>	find${table.className}ListByMap(Map<String,Object> param);
+     List<${table.className}>	find${table.className}List(Map<String,Object> param);
 
 
 	/**
