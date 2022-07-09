@@ -29,7 +29,7 @@ public interface ${table.className}Service {
 	 * @param ${lowerClassName}
 	 * @return
 	*/
-     Integer add${table.className}(${table.className} ${lowerClassName});
+     Integer insert${table.className}(${table.className} ${lowerClassName});
 
 
 	/**

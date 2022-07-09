@@ -13,7 +13,7 @@ public class TypeConstant {
     static {
         typeMap.put("BOOLEAN", "boolean");
         typeMap.put("BYTE", "byte[]");
-        typeMap.put("BIGINT", "Long");
+        typeMap.put("BIGINT", "Integer");
         typeMap.put("INT", "Integer");
         typeMap.put("FLOAT", "float");
         typeMap.put("VARCHAR", "String");

@@ -42,7 +42,7 @@ public class ${table.className}ServiceImpl implements ${table.className}Service 
          * @return
         */
         @Override
-        public Integer add${table.className}(${table.className} ${lowerClassName}){
+        public Integer insert${table.className}(${table.className} ${lowerClassName}){
                 return ${lowerClassName}Mapper.insert(${lowerClassName});
         }
 
